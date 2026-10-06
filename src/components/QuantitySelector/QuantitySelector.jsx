@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Button from "../Button/Button.jsx";
 import styles from "./QuantitySelector.module.css";
 
 function QuantitySelector({ min = 1, max = 99 }) {
@@ -20,13 +19,23 @@ function QuantitySelector({ min = 1, max = 99 }) {
 
   return (
     <div className={styles.selector}>
-      <Button variant="secondary" onClick={decrease} disabled={quantity <= min}>
+      <button
+        type="button"
+        className={styles.control}
+        onClick={decrease}
+        disabled={quantity <= min}
+      >
         −
-      </Button>
+      </button>
       <span className={styles.value}>{quantity}</span>
-      <Button variant="secondary" onClick={increase} disabled={quantity >= max}>
+      <button
+        type="button"
+        className={styles.control}
+        onClick={increase}
+        disabled={quantity >= max}
+      >
         +
-      </Button>
+      </button>
     </div>
   );
 }
