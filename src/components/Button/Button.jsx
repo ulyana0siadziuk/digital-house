@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import cartIcon from "../../assets/cart1.svg";
 import styles from "./Button.module.css";
 
 function Button({
@@ -7,6 +8,7 @@ function Button({
   variant = "primary",
   onClick,
   disabled = false,
+  withCartIcon = false,
 }) {
   return (
     <button
@@ -15,6 +17,9 @@ function Button({
       onClick={onClick}
       disabled={disabled}
     >
+      {withCartIcon ? (
+        <img className={styles.icon} src={cartIcon} alt="" />
+      ) : null}
       {children}
     </button>
   );
@@ -26,6 +31,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(["primary", "secondary"]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  withCartIcon: PropTypes.bool,
 };
 
 export default Button;
